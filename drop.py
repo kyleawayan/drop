@@ -1,12 +1,13 @@
 from redbot.core import commands # pylint: disable=import-error
 import random # pylint: disable=import-error
 import discord # pylint: disable=import-error
+import os 
 
 class drop(commands.Cog):
     """Randomly select Fortnite locations"""
 
     @commands.command()
-    async def drop(self, ctx):
+    async def drop(self, ctx): # !drop command
         fortniteList = [
             "shark!",
             "yacht!",
@@ -26,7 +27,7 @@ class drop(commands.Cog):
             "retail!",
             "slurpy!",
             "misty!",
-            "risky! E3", ## unmarked locations
+            "risky! E3", ## unmarked locations below
             "apres ski! E8",
             "box factory! G7",
             "compact cars! G4",
@@ -46,63 +47,68 @@ class drop(commands.Cog):
         unmarked = 0
 
         if "risky" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/risky.png"
+            map = "map/risky.png"
             unmarked = 1
 
         if "apres ski" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/apreski.png"
+            map = "map/apreski.png"
             unmarked = 1
 
         if "box factory" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/boxfactory.png"
+            map = "map/boxfactory.png"
             unmarked = 1
 
         if "compact cars" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/compactcars.png"
+            map = "map/compactcars.png"
             unmarked = 1
 
         if "crash site" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/crashsite.png"
+            map = "map/crashsite.png"
             unmarked = 1
 
         if "coral cove" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/coralcove.png"
+            map = "map/coralcove.png"
             unmarked = 1
 
         if "fancy view" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/fancyview.png"
+            map = "map/fancyview.png"
             unmarked = 1
 
         if "fn radio!" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/fnradio.png"
+            map = "map/fnradio.png"
             unmarked = 1
 
         if "hydro 16!" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/hydro16.png"
+            map = "map/hydro16.png"
             unmarked = 1
 
         if "lockie's light house" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/lockielighthouse.png"
+            map = "map/lockielighthouse.png"
             unmarked = 1
 
         if "logjam woodworks" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/logjam.png"
+            map = "map/logjam.png"
             unmarked = 1
         
         if "pristine point" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/pristine.png"
+            map = "map/pristine.png"
             unmarked = 1
 
         if "orchard!" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/orchard.png"
+            map = "map/orchard.png"
             unmarked = 1
 
         await ctx.send(thedrop)
+
         if unmarked is 1:
-            await ctx.send(file=discord.File(map))
+            # relative path
+            # a.k.a. use "map/orchard.png" instead of "home/ubuntu/.local/share/Red-DiscordBot bla bla bla"
+            my_path = os.path.abspath(os.path.dirname(__file__))
+            path = os.path.join(my_path, map)
+            await ctx.send(file=discord.File(path))
 
     @commands.command()
-    async def where(self, ctx):
+    async def where(self, ctx): # !where command
         fortniteList = [
             "shark!",
             "yacht!",
@@ -122,7 +128,7 @@ class drop(commands.Cog):
             "retail!",
             "slurpy!",
             "misty!",
-            "risky! E3", ## unmarked locations
+            "risky! E3", ## unmarked locations below
             "apres ski! E8",
             "box factory! G7",
             "compact cars! G4",
@@ -142,57 +148,62 @@ class drop(commands.Cog):
         unmarked = 0
 
         if "risky" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/risky.png"
+            map = "map/risky.png"
             unmarked = 1
 
         if "apres ski" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/apreski.png"
+            map = "map/apreski.png"
             unmarked = 1
 
         if "box factory" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/boxfactory.png"
+            map = "map/boxfactory.png"
             unmarked = 1
 
         if "compact cars" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/compactcars.png"
+            map = "map/compactcars.png"
             unmarked = 1
 
         if "crash site" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/crashsite.png"
+            map = "map/crashsite.png"
             unmarked = 1
 
         if "coral cove" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/coralcove.png"
+            map = "map/coralcove.png"
             unmarked = 1
 
         if "fancy view" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/fancyview.png"
+            map = "map/fancyview.png"
             unmarked = 1
 
         if "fn radio!" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/fnradio.png"
+            map = "map/fnradio.png"
             unmarked = 1
 
         if "hydro 16!" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/hydro16.png"
+            map = "map/hydro16.png"
             unmarked = 1
 
         if "lockie's light house" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/lockielighthouse.png"
+            map = "map/lockielighthouse.png"
             unmarked = 1
 
         if "logjam woodworks" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/logjam.png"
+            map = "map/logjam.png"
             unmarked = 1
         
         if "pristine point" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/pristine.png"
+            map = "map/pristine.png"
             unmarked = 1
 
         if "orchard!" in thedrop:
-            map = "/home/ubuntu/.local/share/Red-DiscordBot/data/niki/cogs/CogManager/cogs/drop/map/orchard.png"
+            map = "map/orchard.png"
             unmarked = 1
 
         await ctx.send(thedrop)
+
         if unmarked is 1:
-            await ctx.send(file=discord.File(map))
+            # relative path
+            # a.k.a. use "map/orchard.png" instead of "home/ubuntu/.local/share/Red-DiscordBot bla bla bla"
+            my_path = os.path.abspath(os.path.dirname(__file__))
+            path = os.path.join(my_path, map)
+            await ctx.send(file=discord.File(path))
