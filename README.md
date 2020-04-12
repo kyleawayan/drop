@@ -12,4 +12,4 @@ git clone https://github.com/kyleawayan/drop/
 ```
 After that link the path to your bot by using `[p]addpath /home/.../cogs/CogManager/cogs/drop`. Replace the path in the command with your appropriate path.
 
-Load the cog with `!load drop`.
+Load the cog with `[p]load drop`.
