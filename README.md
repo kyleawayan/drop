@@ -13,3 +13,7 @@ git clone https://github.com/kyleawayan/drop/
 After that link the path to your bot by using `[p]addpath /home/.../cogs/CogManager/cogs/drop`. Replace the path in the command with your appropriate path.
 
 Load the cog with `[p]load drop`.
+
+## To-Do
+- [ ] Add 🔁 reaction button to execute command without having to type command again
+- [ ] Eliminate having six millions ifs for map screenshots
