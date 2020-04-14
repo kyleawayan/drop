@@ -7,11 +7,11 @@ from redbot.core.utils.menus import ( # pylint: disable=import-error
 )
 from redbot.core.utils.predicates import MessagePredicate, ReactionPredicate # pylint: disable=import-error
 
-class dropdev(commands.Cog):
+class drop(commands.Cog):
     """Randomly select Fortnite locations"""
 
     @commands.command()
-    async def d(self, ctx): # !drop command
+    async def drop(self, ctx): # !drop command
         fortniteList = [
             "shark!",
             "yacht!",
