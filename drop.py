@@ -1,11 +1,9 @@
 from redbot.core import commands # pylint: disable=import-error
 import random # pylint: disable=import-error
 import discord # pylint: disable=import-error
-import os.path
-from redbot.core.utils.menus import ( # pylint: disable=import-error
-    start_adding_reactions,
-)
-from redbot.core.utils.predicates import MessagePredicate, ReactionPredicate # pylint: disable=import-error
+import os.path # pylint: disable=import-error
+from redbot.core.utils.menus import start_adding_reactions # pylint: disable=import-error
+from redbot.core.utils.predicates import ReactionPredicate # pylint: disable=import-error
 
 class drop(commands.Cog):
     """Randomly select Fortnite locations"""
@@ -102,7 +100,7 @@ class drop(commands.Cog):
             map = "map/orchard.png"
             unmarked = 1
 
-        if unmarked is 0:
+        if unmarked == 0:
             repeat = await ctx.send(thedrop)
         else:
             await ctx.send(thedrop)
@@ -113,5 +111,6 @@ class drop(commands.Cog):
             repeat = await ctx.send(file=discord.File(path))
 
         start_adding_reactions(repeat, "🔁")
-        pred = ReactionPredicate.yes_or_no(repeat, ctx.author)
+        pred = ReactionPredicate.with_emojis("🔁", repeat)
         await ctx.bot.wait_for("reaction_add", check=pred)
+        await ctx.send("test") #code to replay command goes here
