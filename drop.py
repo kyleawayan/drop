@@ -14,73 +14,55 @@ class drop(commands.Cog):
 
         # locations without picture (labeled)
         marked_list = [ 
-            'shark',
-            'yacht',
-            'grotto',
-            'rig',
-            'craggy cliffs',
-            'steamy stacks',
-            'pleasant park',
-            'sweaty sands',
-            'frenzy farm',
-            'dirty docks',
-            'holly hedges',
-            'weeping woods',
-            'lazy lake',
-            'retail row',
-            'slurpy swamp',
-            'misty meadows'            
+            'shark!',
+            'yacht!',
+            'grotto!',
+            'rig!',
+            'craggy cliffs!',
+            'steamy stacks!',
+            'pleasant park!',
+            'sweaty sands!',
+            'frenzy farm!',
+            'dirty docks!',
+            'holly hedges!',
+            'weeping woods!',
+            'lazy lake!',
+            'retail row!',
+            'slurpy swamp!',
+            'misty meadows!' 
         ]
         
-        #has to correspond with picture in /map/
-        unmarked_list = { 
-            1:"apres ski",
-            2:"box factory",
-            3:"compact cars",
-            4:"coral cove",
-            5:"crash site",
-            6:"fancy view",
-            7:"fn radio",
-            8:"hydro 16",
-            9:"lockies lighthouse",
-            10:"logjam woodworks",
-            11:"orchard",
-            12:"pristine point",
-            13:"risky reels"
-        }
-        
-        unmarked_coors = {
-            1: 'D8', # apres ski
-            2: 'G7', # box factory
-            3: 'G4', # compact cars
-            4: 'A2', # coral cove
-            5: 'B2', # crash site
-            6: 'A4', # fancy view
-            7: 'F2', # fn radio
-            8: 'D7', # hydro 16
-            9: 'C1', # lockies lighthouse
-            10: 'B6', # logjam woodworks
-            11: 'F3', # orchard
-            12: 'G1', # pristine point
-            13: 'E4' # risky
-        }
+        # before '!' has to correspond with picture in /map/
+        unmarked_list = [ 
+            'apres ski! D8',
+            'box factory! G7',
+            'compact cars! G4',
+            'coral cove! A2',
+            'crash site! B2',
+            'fancy view! A4',
+            'fn radio! F2',
+            'hydro 16! D7',
+            'lockies lighthouse! C1',
+            'logjam woodworks! B6',
+            'orchard! F3',
+            'pristine point! G1',
+            'risky reels! E4'
+        ]
 
-        #random list
         if random.randint(1,2) == 1:
             the_drop = random.choice(marked_list)
             unmarked = False
         else:
-            rand_drop = random.randint(1,13)
-            the_drop = unmarked_list.get(rand_drop)
-            the_coors = unmarked_coors.get(rand_drop)
+            the_drop = random.choice(unmarked_list)
+            drop_filename = the_drop[:-4]
             unmarked = True
-            drop_map = f'map/{the_drop}.png'
+            drop_map = f'map/{drop_filename}.png'
 
         if unmarked == False:
-            repeat = await ctx.send(the_drop + '!')
+            repeat = await ctx.send(the_drop)
 
         if unmarked == True:
-            await ctx.send(the_drop + '! ' + the_coors)
+            await ctx.send(drop_filename)
             my_path = os.path.abspath(os.path.dirname(__file__))
             path = os.path.join(my_path, drop_map)
             repeat = await ctx.send(file=discord.File(path))
