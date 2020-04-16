@@ -15,6 +15,6 @@ After that link the path to your bot by using `[p]addpath /home/.../cogs/CogMana
 Load the cog with `[p]load drop`.
 
 ## To-Do
-- [ ] Add 🔁 reaction button to execute command without having to type command again
-- [ ] Eliminate having six millions ifs for map screenshots
+- [X] Add 🔁 reaction button to execute command without having to type command again
+- [X] Eliminate having six millions ifs for map screenshots
 - [ ] Make sure not to repeat same spot again
