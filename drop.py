@@ -50,6 +50,8 @@ class drop(commands.Cog):
             "pristine point",
             "risky reels"
         ]
+
+        
         if random.randint(1,2) == 1:
             the_drop = random.choice(marked_list)
             unmarked = False
@@ -58,11 +60,13 @@ class drop(commands.Cog):
             unmarked = True
             drop_map = f'map/{the_drop}.png'
 
+        message = the_drop + '!'
+
         if unmarked == False:
-            repeat = await ctx.send(the_drop)
+            repeat = await ctx.send(message)
 
         if unmarked == True:
-            await ctx.send(the_drop)
+            await ctx.send(message)
             my_path = os.path.abspath(os.path.dirname(__file__))
             path = os.path.join(my_path, drop_map)
             repeat = await ctx.send(file=discord.File(path))
