@@ -53,14 +53,14 @@ class drop(commands.Cog):
             1: 'D8', # apres ski
             2: 'G7', # box factory
             3: 'G4', # compact cars
-            4: '2', # coral cove
-            5: '2', # crash site
-            6: '2', # fancy view
+            4: 'A2', # coral cove
+            5: 'B2', # crash site
+            6: 'A4', # fancy view
             7: 'F2', # fn radio
             8: 'D7', # hydro 16
             9: 'C1', # lockies lighthouse
             10: 'B6', # logjam woodworks
-            11: '', # orchard
+            11: 'F3', # orchard
             12: 'G1', # pristine point
             13: 'E4' # risky
         }
