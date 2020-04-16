@@ -62,7 +62,7 @@ class drop(commands.Cog):
             repeat = await ctx.send(the_drop)
 
         if unmarked == True:
-            await ctx.send(drop_filename)
+            await ctx.send(the_drop)
             my_path = os.path.abspath(os.path.dirname(__file__))
             path = os.path.join(my_path, drop_map)
             repeat = await ctx.send(file=discord.File(path))
