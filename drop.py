@@ -4,113 +4,102 @@ import discord # pylint: disable=import-error
 import os.path # pylint: disable=import-error
 from redbot.core.utils.menus import start_adding_reactions # pylint: disable=import-error
 from redbot.core.utils.predicates import ReactionPredicate # pylint: disable=import-error
+import asyncio # pylint: disable=import-error
 
 class drop(commands.Cog):
     """Randomly select Fortnite locations"""
 
     @commands.command()
     async def drop(self, ctx): # !drop command
-        fortniteList = [
-            "shark!",
-            "yacht!",
-            "agency!",
-            "grotto!",
-            "rig!",
-            "craggy!",
-            "steamy!",
-            "pleasant!",
-            "sweaty!",
-            "frenzy!",
-            "salty!",
-            "dirty docks!",
-            "holly hedges!",
-            "weeping woods!",
-            "lazy!",
-            "retail!",
-            "slurpy!",
-            "misty!",
-            "risky! E3", ## unmarked locations below
-            "apres ski! E8",
-            "box factory! G7",
-            "compact cars! G4",
-            "crash site! B2",
-            "coral cove! A2",
-            "fancy view! A4",
-            "fn radio! F2",
-            "hydro 16! D7",
-            "lockie's light house! C1",
-            "logjam woodworks! B6",
-            "pristine point! G1",
-            "orchard! F3",
-        ]
 
-        thedrop = random.choice(fortniteList)
-
-        unmarked = 0
-
-        if "risky" in thedrop:
-            map = "map/risky.png"
-            unmarked = 1
-
-        if "apres ski" in thedrop:
-            map = "map/apreski.png"
-            unmarked = 1
-
-        if "box factory" in thedrop:
-            map = "map/boxfactory.png"
-            unmarked = 1
-
-        if "compact cars" in thedrop:
-            map = "map/compactcars.png"
-            unmarked = 1
-
-        if "crash site" in thedrop:
-            map = "map/crashsite.png"
-            unmarked = 1
-
-        if "coral cove" in thedrop:
-            map = "map/coralcove.png"
-            unmarked = 1
-
-        if "fancy view" in thedrop:
-            map = "map/fancyview.png"
-            unmarked = 1
-
-        if "fn radio!" in thedrop:
-            map = "map/fnradio.png"
-            unmarked = 1
-
-        if "hydro 16!" in thedrop:
-            map = "map/hydro16.png"
-            unmarked = 1
-
-        if "lockie's light house" in thedrop:
-            map = "map/lockielighthouse.png"
-            unmarked = 1
-
-        if "logjam woodworks" in thedrop:
-            map = "map/logjam.png"
-            unmarked = 1
+ #       my_path = os.path.abspath(os.path.dirname(__file__))
+  #      path = os.path.join(my_path) # relative path
+    #    for file in os.listdir(path):
+     #       if file.endswith(".png"):
+      #          await ctx.send(os.path.join("/mydir", file))
         
-        if "pristine point" in thedrop:
-            map = "map/pristine.png"
-            unmarked = 1
+        shark = "The Shark!"
+        yacht = "The Yacht!"
+        grotto = "The Grotto!"
+        rig = "The Rig!"
+        craggy = "Craggy Cliffs!"
+        steamy = "Steamy Stacks"
+        pleasant = "Pleasant Park"
+        sweaty = "Sweaty Shores"
+        frenzy = "Frenzy Farm!"
+        dirty_docks = "Dirty Docks!"
+        holly_hedges = "Holly Hedges!"
+        weeping_woods = "Weeping Woods!"
+        lazy = "Lazy Lake!"
+        retail = "Retail Row!"
+        slurpy = "Slurpy Swamp!"
+        misty = "Misty Meadows!"
+        apreski = "Apres Ski! (E8)"
+        boxfactory = "Box Factory! (G7)"
+        compactcars = "Compact Cars! (G4)"
+        coralcove = "Coral Cove! (A2)"
+        crashsite = "Crash Site! (B2)"
+        fancyview = "Fancy View! (A4)"
+        fnradio = "FN Radio (F2)"
+        hydro16 = "Hydro 16! (D7)"
+        lockielighthouse = "Lockie's Lighthouse! (B6)"
+        logjam = "Logjam Woodworks! (B6)"
+        orchard = "The Orchard! (F3)"
+        pristine = "Pristine Point! (G1)"
+        risky = "Risky Reels! (E3)"
 
-        if "orchard!" in thedrop:
-            map = "map/orchard.png"
-            unmarked = 1
 
-        if unmarked == 0:
-            repeat = await ctx.send(thedrop)
+        marked_list = [
+            'shark',
+            'yacht',
+            'grotto',
+            'rig',
+            'craggy cliffs',
+            'steamy stacks',
+            'pleasant park',
+            'sweaty sands',
+            'frenzy farm',
+            'dirty docks',
+            'holly hedges',
+            'weeping woods',
+            'lazy lake',
+            'retail row',
+            'slurpy swamp',
+            'misty meadows'            
+        ]
+        unmarked_list = [
+            "apres ski",
+            "box factory",
+            "compact cars",
+            "coral cove",
+            "crash site",
+            "fancy view",
+            "fn radio",
+            "hydro 16",
+            "lockies lighthouse",
+            "logjam woodworks",
+            "orchard",
+            "pristine point",
+            "risky reels"
+        ]
+        if random.randint(1,2) == 1:
+            the_drop = random.choice(marked_list)
+            unmarked = False
         else:
-            await ctx.send(thedrop)
-            # relative path
-            # a.k.a. use "map/orchard.png" instead of "home/ubuntu/.local/share/Red-DiscordBot bla bla bla"
+            the_drop = random.choice(unmarked_list)
+            unmarked = True
+            drop_map = f'map/{the_drop}.png'
+
+        if unmarked == False:
+            repeat = await ctx.send(the_drop)
+            await ctx.send(the_drop)
+        if unmarked == True:
+            await ctx.send(the_drop)
             my_path = os.path.abspath(os.path.dirname(__file__))
-            path = os.path.join(my_path, map)
+            path = os.path.join(my_path, drop_map)
             repeat = await ctx.send(file=discord.File(path))
 
-        start_adding_reactions(repeat, "🔁")
-        pred = ReactionPredicate.with_emojis("🔁", repeat)
-        await ctx.bot.wait_for("reaction_add", check=pred)
-        await ctx.send("test") #code to replay command goes here
+            start_adding_reactions(repeat, "🔁")
+            pred = ReactionPredicate.with_emojis("🔁", repeat)
+            await ctx.bot.wait_for("reaction_add", check=pred)
+            await ctx.send("fuck you")
