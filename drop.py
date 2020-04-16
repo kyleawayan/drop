@@ -10,14 +10,10 @@ class drop(commands.Cog):
     """Randomly select Fortnite locations"""
 
     @commands.command()
-    async def drop(self, ctx): # !drop command
+    async def drop(self, ctx): # ?drop command
 
- #       my_path = os.path.abspath(os.path.dirname(__file__))
-  #      path = os.path.join(my_path) # relative path
-    #    for file in os.listdir(path):
-     #       if file.endswith(".png"):
-      #          await ctx.send(os.path.join("/mydir", file))
-        marked_list = [
+        # locations without picture (labeled)
+        marked_list = [ 
             'shark',
             'yacht',
             'grotto',
@@ -35,7 +31,9 @@ class drop(commands.Cog):
             'slurpy swamp',
             'misty meadows'            
         ]
-        unmarked_list = [
+        
+        #locations with corresponding picture in /map/
+        unmarked_list = [ 
             "apres ski",
             "box factory",
             "compact cars",
@@ -51,7 +49,7 @@ class drop(commands.Cog):
             "risky reels"
         ]
 
-        
+        #random list
         if random.randint(1,2) == 1:
             the_drop = random.choice(marked_list)
             unmarked = False
@@ -60,13 +58,11 @@ class drop(commands.Cog):
             unmarked = True
             drop_map = f'map/{the_drop}.png'
 
-        message = the_drop + '!'
-
         if unmarked == False:
-            repeat = await ctx.send(message)
+            repeat = await ctx.send(the_drop + '!')
 
         if unmarked == True:
-            await ctx.send(message)
+            await ctx.send(the_drop + '!')
             my_path = os.path.abspath(os.path.dirname(__file__))
             path = os.path.join(my_path, drop_map)
             repeat = await ctx.send(file=discord.File(path))
