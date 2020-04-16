@@ -32,7 +32,7 @@ class drop(commands.Cog):
             'misty meadows!' 
         ]
         
-        # before '!' has to correspond with picture in /map/
+        # before '!' has to correspond with picture in /map/ 
         unmarked_list = [ 
             'apres ski! D8',
             'box factory! G7',
