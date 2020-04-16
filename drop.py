@@ -17,7 +17,6 @@ class drop(commands.Cog):
     #    for file in os.listdir(path):
      #       if file.endswith(".png"):
       #          await ctx.send(os.path.join("/mydir", file))
-        
         marked_list = [
             'shark',
             'yacht',
