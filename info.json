@@ -1,0 +1,8 @@
+{
+    "author" : ["kylea#0077 and Gaba_H#6311"],
+    "install_msg" : "thanks for installing! tbh this is probably out of date now. contact kylea#0077 or Gaba_H#6311 and we will happily update if if people still want to use this!",
+    "name" : "drop",
+    "short" : "Randomly choose a Fortnite droping location,",
+    "description" : "Randomly choose a Fortnite droping location, including unmarked waypoints. Unmarked waypoints will have map coordinates and map screenshots attatched.",
+    "tags" : ["fortnite"]
+}

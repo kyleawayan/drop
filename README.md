@@ -5,14 +5,11 @@ Randomly choose a Fortnite droping location, including unmarked waypoints. Unmar
 `[p]drop` or `[p]where`.
 
 ## Installation
-First use `[p]datapath` to find the bot directory. `cd` into it. Then run:
+If you haven't installed any cogs yet, load the downloader cog by running `[p]load downloader`. Next, add this repo by running
 ```
-cd cogs/CogManager/cogs
-git clone https://github.com/kyleawayan/drop/
+[p]repo add drop https://github.com/kyleawayan/drop
 ```
-After that link the path to your bot by using `[p]addpath /home/.../cogs/CogManager/cogs/drop`. Replace the path in the command with your appropriate path.
-
-Load the cog with `[p]load drop`.
+Install the cog by running `[p]cog install drop drop` and load it with `[p]load drop`.
 
 ## To-Do
 - [X] Add 🔁 reaction button to execute command without having to type command again
